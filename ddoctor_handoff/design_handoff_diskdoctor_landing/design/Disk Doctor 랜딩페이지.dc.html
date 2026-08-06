@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+body{margin:0;background:#f6f6f4;font-family:Pretendard,-apple-system,system-ui,sans-serif;color:#1b1f20;-webkit-font-smoothing:antialiased}
+a{color:#175c63;text-decoration:none}
+a:hover{color:#0f3f45}
+*{box-sizing:border-box}
+input,textarea,select,button{font-family:inherit}
+@keyframes ddFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@media (max-width:900px){
+[style*="grid-template-columns"]{grid-template-columns:1fr !important}
+section,header > div,footer > div{padding-left:20px !important;padding-right:20px !important}
+section[style*="grid-template-columns"],section > div[style*="grid-template-columns"]{gap:32px !important}
+h1{font-size:40px !important}
+h2{font-size:30px !important}
+nav a[href="#product"],nav a[href="#point"],nav a[href="#spec"]{display:none}
+footer > div,header > div{gap:14px !important}
+footer > div > div{text-align:left !important}
+}
+@media (max-width:600px){
+section{padding-top:48px !important;padding-bottom:40px !important}
+h1{font-size:32px !important;line-height:1.25 !important}
+h2{font-size:25px !important}
+table th,table td{padding:11px 8px !important;font-size:12.5px !important}
+[style*="aspect-ratio:4/5"]{aspect-ratio:4/3 !important}
+}
+</style>
+</helmet>
+
+<div style="max-width:100%;overflow-x:hidden">
+
+<header style="position:sticky;top:0;z-index:50;background:rgba(246,246,244,.9);backdrop-filter:blur(10px);border-bottom:1px solid rgba(0,0,0,.07)">
+<div style="max-width:1160px;margin:0 auto;padding:14px 28px;display:flex;align-items:center;justify-content:space-between;gap:24px">
+<div style="display:flex;align-items:baseline;gap:10px">
+<span style="font:800 21px/1 Pretendard,sans-serif;letter-spacing:-.02em;color:#175c63">Disk Dr.</span>
+<span style="font:500 13px/1 Pretendard,sans-serif;color:#6b7375">디스크닥터 허리보조기</span>
+</div>
+<nav style="display:flex;align-items:center;gap:26px">
+<a href="#product" style="font:500 14px Pretendard,sans-serif;color:#3c4446">제품</a>
+<a href="#point" style="font:500 14px Pretendard,sans-serif;color:#3c4446">특징</a>
+<a href="#spec" style="font:500 14px Pretendard,sans-serif;color:#3c4446">사양·사이즈</a>
+<a href="#contact" style="display:inline-flex;align-items:center;height:40px;padding:0 20px;border-radius:999px;background:#175c63;color:#fff;font:600 14px Pretendard,sans-serif">제품 문의하기</a>
+</nav>
+</div>
+</header>
+
+<section style="max-width:1160px;margin:0 auto;padding:72px 28px 64px;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center">
+<div>
+<div style="display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;background:#e3edee;color:#175c63;font:600 13px Pretendard,sans-serif;margin-bottom:24px">
+<span style="width:6px;height:6px;border-radius:50%;background:#175c63"></span>한국의료기기 안전정보원 1등급 신고 의료기기</div>
+<h1 style="margin:0 0 20px;font:800 58px/1.18 Pretendard,sans-serif;letter-spacing:-.035em;color:#12191a;text-wrap:balance">
+허리 &amp; 관절<br><span style="color:#175c63">보조기 전문 회사</span></h1>
+<p style="margin:0 0 32px;font:400 18px/1.7 Pretendard,sans-serif;color:#4a5254;max-width:480px;text-wrap:pretty">
+공기 주입 방식으로 척추를 견인하는 디스크닥터 허리보조기. 추간판 탈출증, 퇴행성 협착증 등의 치료에 도움을 주는 수동식 의료기기입니다.</p>
+<div style="display:flex;flex-wrap:wrap;gap:12px;margin-bottom:36px">
+<a href="#contact" style="display:inline-flex;align-items:center;height:56px;padding:0 30px;border-radius:10px;background:#175c63;color:#fff;font:600 16px Pretendard,sans-serif;white-space:nowrap">제품 문의하기</a>
+<a href="#spec" style="display:inline-flex;align-items:center;height:56px;padding:0 30px;border-radius:10px;background:#fff;border:1px solid #d6d9d8;color:#1b1f20;font:600 16px Pretendard,sans-serif;white-space:nowrap">사양·사이즈 보기</a>
+</div>
+<div style="display:flex;gap:36px;padding-top:28px;border-top:1px solid rgba(0,0,0,.09)">
+<div><div style="font:800 26px Pretendard,sans-serif;color:#175c63">60kg+</div><div style="font:400 13px Pretendard,sans-serif;color:#6b7375;margin-top:4px">인증된 허리 지지력</div></div>
+<div><div style="font:800 26px Pretendard,sans-serif;color:#175c63">100%</div><div style="font:400 13px Pretendard,sans-serif;color:#6b7375;margin-top:4px">국내생산 · 수작업</div></div>
+<div><div style="font:800 26px Pretendard,sans-serif;color:#175c63">비급여</div><div style="font:400 13px Pretendard,sans-serif;color:#6b7375;margin-top:4px">코드 등재 제품</div></div>
+</div>
+</div>
+<div style="position:relative">
+<img src="uploads/pasted-1785991052596-0.png" alt="디스크닥터 허리보조기 착용" style="display:block;width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:16px;border:1px solid rgba(0,0,0,.08)">
+<div style="position:absolute;left:-24px;bottom:44px;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:16px 20px;box-shadow:0 12px 30px rgba(0,0,0,.08);animation:ddFloat 6s ease-in-out infinite">
+<div style="font:700 14px Pretendard,sans-serif;color:#12191a">정격 사용 압력 12psi ± 2psi</div>
+<div style="font:400 12.5px Pretendard,sans-serif;color:#6b7375;margin-top:3px">에어펌프 최대 공급 압력 26psi</div>
+</div>
+</div>
+</section>
+
+<section style="background:#175c63">
+<div style="max-width:1160px;margin:0 auto;padding:26px 28px;display:flex;flex-wrap:wrap;gap:14px 44px;align-items:center;justify-content:space-between">
+<span style="font:600 15px Pretendard,sans-serif;color:#cfe2e4">식약처 1등급 신고 의료기기</span>
+<span style="font:600 15px Pretendard,sans-serif;color:#cfe2e4">비급여 코드 등재</span>
+<span style="font:600 15px Pretendard,sans-serif;color:#cfe2e4">품질보증 6개월</span>
+<span style="font:600 15px Pretendard,sans-serif;color:#cfe2e4">본사 A/S 지원</span>
+<span style="font:600 15px Pretendard,sans-serif;color:#cfe2e4">전국 오프라인 총판</span>
+</div>
+</section>
+
+<section id="product" style="max-width:1160px;margin:0 auto;padding:88px 28px 20px;scroll-margin-top:70px">
+<div style="display:flex;align-items:flex-end;justify-content:space-between;gap:24px;margin-bottom:36px">
+<h2 style="margin:0;font:800 38px/1.25 Pretendard,sans-serif;letter-spacing:-.03em;color:#12191a">디스크닥터 허리보조기</h2>
+<p style="margin:0;font:400 15px/1.6 Pretendard,sans-serif;color:#6b7375;max-width:340px">벨트, 벨크로 패드, 핸드 펌프(MP)로 구성된 공기 주입식 견인 보조기입니다.</p>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+<article style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:16px;overflow:hidden">
+<img src="uploads/pasted-1785991139433-0.png" alt="WD57" style="display:block;width:100%;aspect-ratio:16/10;object-fit:contain;background:#fbfbfa">
+<div style="padding:26px 28px 30px">
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+<h3 style="margin:0;font:800 26px Pretendard,sans-serif;letter-spacing:-.02em;color:#12191a">WD57</h3>
+<span style="padding:4px 10px;border-radius:6px;background:#e3edee;color:#175c63;font:600 12px Pretendard,sans-serif">비급여제품</span></div>
+<p style="margin:0 0 18px;font:400 15px/1.7 Pretendard,sans-serif;color:#4a5254">상·하 이중 에어셀 구조로 견인력을 높인 모델. 수술 이후 요추 안정성이 필요한 사용자에게 적합합니다.</p>
+<ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+<li style="font:400 14px Pretendard,sans-serif;color:#4a5254">· 구성: 벨트, 벨크로 패드, 핸드 펌프(MP)</li>
+<li style="font:400 14px Pretendard,sans-serif;color:#4a5254">· 정격 사용 압력 12psi ± 2psi</li>
+</ul>
+</div>
+</article>
+<article style="background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:16px;overflow:hidden">
+<img src="uploads/pasted-1785991150613-0.png" alt="WD37" style="display:block;width:100%;aspect-ratio:16/10;object-fit:contain;background:#fbfbfa">
+<div style="padding:26px 28px 30px">
+<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+<h3 style="margin:0;font:800 26px Pretendard,sans-serif;letter-spacing:-.02em;color:#12191a">WD37</h3>
+<span style="padding:4px 10px;border-radius:6px;background:#e3edee;color:#175c63;font:600 12px Pretendard,sans-serif">비급여제품</span></div>
+<p style="margin:0 0 18px;font:400 15px/1.7 Pretendard,sans-serif;color:#4a5254">얇고 가벼운 단일 에어셀 구조. 옷 안에 착용해도 티가 나지 않아 일상생활 착용에 적합합니다.</p>
+<ul style="margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px">
+<li style="font:400 14px Pretendard,sans-serif;color:#4a5254">· 구성: 벨트, 벨크로 패드, 핸드 펌프(MP)</li>
+<li style="font:400 14px Pretendard,sans-serif;color:#4a5254">· S/M/L/XL 4개 사이즈</li>
+</ul>
+</div>
+</article>
+</div>
+</section>
+
+<section id="point" style="max-width:1160px;margin:0 auto;padding:80px 28px 10px;scroll-margin-top:70px">
+<h2 style="margin:0 0 8px;font:800 38px/1.25 Pretendard,sans-serif;letter-spacing:-.03em;color:#12191a">제품이 선택되는 5가지 이유</h2>
+<p style="margin:0 0 40px;font:400 16px Pretendard,sans-serif;color:#6b7375">Retail Business Optimization Point</p>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;background:rgba(0,0,0,.08);border:1px solid rgba(0,0,0,.08);border-radius:16px;overflow:hidden">
+<sc-for list="{{ points }}" as="p" hint-placeholder-count="5">
+<div style="background:#fff;padding:32px 34px;display:flex;gap:20px;align-items:flex-start">
+<div style="flex:none;width:38px;height:38px;border-radius:50%;border:1.5px solid #175c63;color:#175c63;display:flex;align-items:center;justify-content:center;font:700 14px Pretendard,sans-serif">{{ p.n }}</div>
+<div>
+<h3 style="margin:0 0 8px;font:700 19px/1.4 Pretendard,sans-serif;color:#175c63;letter-spacing:-.02em">{{ p.title }}</h3>
+<p style="margin:0;font:400 15px/1.75 Pretendard,sans-serif;color:#4a5254;text-wrap:pretty">{{ p.body }}</p>
+</div>
+</div>
+</sc-for>
+<div style="background:#e9edec;padding:32px 34px;display:flex;flex-direction:column;justify-content:center;gap:14px">
+<p style="margin:0;font:600 17px/1.6 Pretendard,sans-serif;color:#12191a">총판·매장 단위 공급 조건을 안내해 드립니다.</p>
+<a href="#contact" style="align-self:flex-start;display:inline-flex;align-items:center;height:46px;padding:0 22px;border-radius:8px;background:#175c63;color:#fff;font:600 15px Pretendard,sans-serif">문의 남기기</a>
+</div>
+</div>
+</section>
+
+<section id="spec" style="max-width:1160px;margin:0 auto;padding:80px 28px 0;scroll-margin-top:70px">
+<h2 style="margin:0 0 36px;font:800 38px/1.25 Pretendard,sans-serif;letter-spacing:-.03em;color:#12191a">SPEC &amp; 사이즈</h2>
+<div style="display:grid;grid-template-columns:1fr 1.15fr;gap:44px;align-items:start">
+<div style="display:flex;flex-direction:column;gap:0">
+<sc-for list="{{ specs }}" as="s" hint-placeholder-count="6">
+<div style="display:grid;grid-template-columns:130px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid rgba(0,0,0,.09)">
+<span style="font:700 14px Pretendard,sans-serif;color:#175c63">{{ s.k }}</span>
+<span style="font:400 14.5px/1.65 Pretendard,sans-serif;color:#4a5254">{{ s.v }}</span>
+</div>
+</sc-for>
+</div>
+<div>
+<table style="width:100%;border-collapse:collapse;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:12px;overflow:hidden">
+<thead><tr style="background:#eaf1f2">
+<th style="padding:14px 12px;font:700 13px Pretendard,sans-serif;color:#12191a;text-align:left">SIZE</th>
+<th style="padding:14px 12px;font:700 13px Pretendard,sans-serif;color:#12191a;text-align:right">깊이X높이 (mm)</th>
+<th style="padding:14px 12px;font:700 13px Pretendard,sans-serif;color:#12191a;text-align:right">높이 (공기 주입 후)</th>
+<th style="padding:14px 12px;font:700 13px Pretendard,sans-serif;color:#12191a;text-align:right">착용 권장 사이즈 (inch)</th>
+</tr></thead>
+<tbody>
+<sc-for list="{{ sizes }}" as="r" hint-placeholder-count="4">
+<tr style="border-top:1px solid rgba(0,0,0,.07)">
+<td style="padding:15px 12px;font:700 14px Pretendard,sans-serif;color:#175c63">{{ r.size }}</td>
+<td style="padding:15px 12px;font:400 14px Pretendard,sans-serif;color:#4a5254;text-align:right">{{ r.dim }}</td>
+<td style="padding:15px 12px;font:400 14px Pretendard,sans-serif;color:#4a5254;text-align:right">{{ r.h }}</td>
+<td style="padding:15px 12px;font:400 14px Pretendard,sans-serif;color:#4a5254;text-align:right">{{ r.fit }}</td>
+</tr>
+</sc-for>
+</tbody>
+</table>
+<div style="margin-top:22px;background:#fff;border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:22px 24px">
+<div style="font:700 15px Pretendard,sans-serif;color:#12191a;margin-bottom:12px">제품 수리(A/S)</div>
+<p style="margin:0 0 6px;font:400 14px/1.7 Pretendard,sans-serif;color:#4a5254"><strong style="color:#175c63">무상 수리</strong> 품질 보증 기간 내 제조 공정으로 인하여 문제가 발생한 제품</p>
+<p style="margin:0 0 6px;font:400 14px/1.7 Pretendard,sans-serif;color:#4a5254"><strong style="color:#175c63">유상 수리</strong> 품질 보증 기간이 경과한 제품</p>
+<p style="margin:0;font:400 14px/1.7 Pretendard,sans-serif;color:#4a5254"><strong style="color:#175c63">A/S 문의</strong> 디스크닥터 본사 02) 454-8272</p>
+</div>
+</div>
+</div>
+</section>
+
+<section style="max-width:1160px;margin:0 auto;padding:80px 28px 0">
+<div style="display:grid;grid-template-columns:1.6fr 1fr;gap:12px;align-items:stretch">
+<img src="uploads/pasted-1785991069111-0.png" alt="디스크닥터 허리보조기 착용 비교" style="display:block;width:100%;height:100%;min-height:260px;object-fit:cover;border-radius:12px">
+<div style="border-radius:12px;background:#175c63;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;padding:32px">
+<span style="font:800 30px Pretendard,sans-serif;color:#fff;letter-spacing:-.02em">Disk Dr.</span>
+<span style="font:500 15px Pretendard,sans-serif;color:#b9d3d6">건강한 라이프를 되찾다!</span></div>
+</div>
+<p style="margin:22px 0 0;text-align:center;font:400 15px/1.7 Pretendard,sans-serif;color:#6b7375">한국 의료기기 안전정보원에 등록된 1등급 신고의료기기이며,<br>비급여 등재된 제품만 제공합니다.</p>
+</section>
+
+<section id="contact" style="margin-top:88px;background:#12191a;scroll-margin-top:70px">
+<div style="max-width:1160px;margin:0 auto;padding:80px 28px;display:grid;grid-template-columns:1fr 1.1fr;gap:64px">
+<div>
+<h2 style="margin:0 0 16px;font:800 38px/1.25 Pretendard,sans-serif;letter-spacing:-.03em;color:#fff">제품 문의</h2>
+<p style="margin:0 0 40px;font:400 16px/1.75 Pretendard,sans-serif;color:#9aa3a4;max-width:380px">제품 사용 문의, 사이즈 상담, 매장·병원 공급 문의를 남겨 주시면 담당자가 순차적으로 연락드립니다.</p>
+
+</div>
+<div style="background:#fff;border-radius:16px;padding:34px 36px 38px">
+<sc-if value="{{ sent }}" hint-placeholder-val="{{ false }}">
+<div style="min-height:420px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center">
+<div style="width:52px;height:52px;border-radius:50%;background:#e3edee;color:#175c63;display:flex;align-items:center;justify-content:center;font:700 22px Pretendard,sans-serif">✓</div>
+<div style="font:700 20px Pretendard,sans-serif;color:#12191a">문의가 접수되었습니다</div>
+<p style="margin:0;font:400 15px/1.7 Pretendard,sans-serif;color:#6b7375">영업일 기준 1일 이내에 남겨주신 연락처로<br>담당자가 연락드리겠습니다.</p>
+<button onClick="{{ reset }}" style="margin-top:8px;height:44px;padding:0 20px;border:1px solid #d6d9d8;background:#fff;border-radius:8px;font:600 14px Pretendard,sans-serif;color:#3c4446;cursor:pointer">다시 작성하기</button>
+</div>
+</sc-if>
+<sc-if value="{{ notSent }}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:16px">
+<div style="font:700 18px Pretendard,sans-serif;color:#12191a;margin-bottom:2px">문의 남기기</div>
+<label style="display:flex;flex-direction:column;gap:7px"><span style="font:600 13px Pretendard,sans-serif;color:#3c4446">이름</span>
+<input placeholder="홍길동" value="{{ name }}" onChange="{{ onName }}" style="height:46px;padding:0 14px;border:1px solid #dcdfde;border-radius:8px;font-size:15px;color:#12191a;outline:none" style-focus="border-color:#175c63"></label>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+<label style="display:flex;flex-direction:column;gap:7px"><span style="font:600 13px Pretendard,sans-serif;color:#3c4446">연락처</span>
+<input inputMode="numeric" placeholder="010-0000-0000" maxLength="13" value="{{ phone }}" onChange="{{ onPhone }}" style="height:46px;padding:0 14px;border:1px solid #dcdfde;border-radius:8px;font-size:15px;color:#12191a;outline:none" style-focus="border-color:#175c63"></label>
+<label style="display:flex;flex-direction:column;gap:7px"><span style="font:600 13px Pretendard,sans-serif;color:#3c4446">회신받을 이메일</span>
+<input type="email" placeholder="name@example.com" value="{{ email }}" onChange="{{ onEmail }}" style="height:46px;padding:0 14px;border:1px solid {{ emailBorder }};border-radius:8px;font-size:15px;color:#12191a;outline:none" style-focus="border-color:#175c63"></label>
+</div>
+<div style="font:400 12.5px/1.5 Pretendard,sans-serif;color:{{ hintColor }};margin-top:-6px">{{ contactHint }}</div>
+<label style="display:flex;flex-direction:column;gap:7px"><span style="font:600 13px Pretendard,sans-serif;color:#3c4446">문의 유형</span>
+<div style="display:flex;flex-wrap:wrap;gap:8px">
+<sc-for list="{{ types }}" as="t" hint-placeholder-count="4">
+<button onClick="{{ t.pick }}" style="height:40px;padding:0 16px;border-radius:999px;border:1px solid {{ t.border }};background:{{ t.bg }};color:{{ t.fg }};font:600 13.5px Pretendard,sans-serif;cursor:pointer">{{ t.label }}</button>
+</sc-for>
+</div></label>
+<label style="display:flex;flex-direction:column;gap:7px"><span style="font:600 13px Pretendard,sans-serif;color:#3c4446">관심 제품</span>
+<div style="display:flex;gap:8px">
+<sc-for list="{{ models }}" as="m" hint-placeholder-count="3">
+<button onClick="{{ m.pick }}" style="flex:1;height:44px;border-radius:8px;border:1px solid {{ m.border }};background:{{ m.bg }};color:{{ m.fg }};font:600 14px Pretendard,sans-serif;cursor:pointer">{{ m.label }}</button>
+</sc-for>
+</div></label>
+<label style="display:flex;flex-direction:column;gap:7px"><span style="font:600 13px Pretendard,sans-serif;color:#3c4446">문의 내용</span>
+<textarea rows="4" placeholder="사이즈, 수량, 납기 등 필요한 내용을 적어 주세요." style="padding:12px 14px;border:1px solid #dcdfde;border-radius:8px;font-size:15px;line-height:1.6;color:#12191a;outline:none;resize:vertical" style-focus="border-color:#175c63"></textarea></label>
+<label style="display:flex;align-items:flex-start;gap:9px;margin-top:2px">
+<input type="checkbox" style="margin-top:3px;width:16px;height:16px;accent-color:#175c63">
+<span style="font:400 13px/1.6 Pretendard,sans-serif;color:#6b7375">문의 처리를 위한 개인정보 수집 및 이용에 동의합니다.</span></label>
+<button onClick="{{ submit }}" style="margin-top:6px;height:54px;border:0;border-radius:10px;background:#175c63;color:#fff;font:700 16px Pretendard,sans-serif;cursor:pointer" style-hover="background:#0f3f45">문의 보내기</button>
+</div>
+</sc-if>
+</div>
+</div>
+</section>
+
+<footer style="background:#0c1213">
+<div style="max-width:1160px;margin:0 auto;padding:30px 28px;display:flex;flex-wrap:wrap;gap:12px 32px;align-items:center;justify-content:space-between">
+<span style="font:700 16px Pretendard,sans-serif;color:#fff">Disk Dr. <span style="font-weight:500;color:#7b8586">디스크닥터 허리보조기</span></span>
+<div style="display:flex;flex-direction:column;gap:5px;text-align:right">
+<span style="font:400 13px/1.6 Pretendard,sans-serif;color:#6f7a7b">Locations. 서울특별시 구로구 디지털로 243 1312호</span>
+<span style="font:400 13px/1.6 Pretendard,sans-serif;color:#6f7a7b">Biz License 739-88-01385</span>
+<span style="font:400 13px/1.6 Pretendard,sans-serif;color:#6f7a7b">© 2026 <strong style="font-weight:700;color:#8e9899">(주) 벗앤벗</strong>. All rights reserved.</span>
+</div>
+</div>
+</footer>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#175c63&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#175c63&quot;,&quot;#1f4f7a&quot;,&quot;#3d4a4c&quot;,&quot;#8a2f45&quot;]}}">
+class Component extends DCLogic {
+  state = { sent: false, type: '제품 사용 문의', model: 'WD57', name: '', phone: '', email: '', touched: false };
+  fmtPhone(v) {
+    const d = String(v).replace(/\D/g, '').slice(0, 11);
+    if (d.length < 4) return d;
+    if (d.length < 8) return d.slice(0, 3) + '-' + d.slice(3);
+    if (d.length === 10) return d.slice(0, 3) + '-' + d.slice(3, 6) + '-' + d.slice(6);
+    return d.slice(0, 3) + '-' + d.slice(3, 7) + '-' + d.slice(7);
+  }
+  pill(active) {
+    return active
+      ? { border: '#175c63', bg: '#175c63', fg: '#ffffff' }
+      : { border: '#dcdfde', bg: '#ffffff', fg: '#4a5254' };
+  }
+  renderVals() {
+    const accent = this.props.accent ?? '#175c63';
+    const typeList = ['제품 사용 문의', '사이즈 상담', '매장·병원 공급', 'A/S 문의'];
+    const modelList = ['WD57', 'WD37', '미정 / 상담'];
+    const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(this.state.email.trim());
+    const phoneOk = this.state.phone.replace(/\D/g, '').length >= 10;
+    const hasContact = phoneOk || emailOk;
+    const valid = hasContact && (!this.state.email.trim() || emailOk);
+    return {
+      accent,
+      sent: this.state.sent,
+      notSent: !this.state.sent,
+      name: this.state.name,
+      phone: this.state.phone,
+      email: this.state.email,
+      onName: e => this.setState({ name: e.target.value }),
+      onPhone: e => this.setState({ phone: this.fmtPhone(e.target.value) }),
+      onEmail: e => this.setState({ email: e.target.value }),
+      emailBorder: this.state.email && !emailOk ? '#c0453f' : '#dcdfde',
+      contactHint: !this.state.touched
+        ? '연락처 또는 이메일 중 한 가지는 반드시 입력해 주세요.'
+        : (!hasContact
+            ? '연락처 또는 이메일 중 한 가지는 반드시 입력해 주세요.'
+            : (this.state.email && !emailOk ? '이메일 주소 형식을 확인해 주세요. (@ 포함)' : '연락처 또는 이메일 중 한 가지는 반드시 입력해 주세요.')),
+      hintColor: this.state.touched && !valid ? '#c0453f' : '#8a908f',
+      submit: () => {
+        this.setState({ touched: true });
+        if (valid) this.setState({ sent: true });
+      },
+      reset: () => this.setState({ sent: false, touched: false, name: '', phone: '', email: '' }),
+      types: typeList.map(label => ({
+        label, ...this.pill(this.state.type === label),
+        pick: () => this.setState({ type: label })
+      })),
+      models: modelList.map(label => ({
+        label, ...this.pill(this.state.model === label),
+        pick: () => this.setState({ model: label })
+      })),
+      points: [
+        { n: '01', title: '수술 이후 허리에 안정성 제공', body: '수술 이후에 요추 부위에서 체간 굴곡과 신전을 제한시켜주며, 전만 감소, 복근 지지, 복강 내압을 증강시켜 줍니다.' },
+        { n: '02', title: '가볍고 얇아서 일상생활 사용 가능', body: '제품 내부에 지지력을 위한 판넬이 들어 있지 않아 가볍고, 옷 안에 착용해도 티가 나지 않아서 모든 일상생활에 착용이 가능합니다.' },
+        { n: '03', title: '60kg 이상의 하중을 버텨주는 허리 지지력', body: '시험 연구원에서 검사 인증을 받은 허리 지지력으로, 일반 성인 상반신 몸무게를 버텨주어 수술 부위에 가해지는 압박을 최소화시켜 줍니다.' },
+        { n: '04', title: '한국의료기기안전정보원 1등급 신고 의료기기', body: '한국의료기기안전정보원(식약처)에 등록된 1등급 의료기기이며, 비급여 코드 등재된 허가받은 제품입니다.' },
+        { n: '05', title: '100% 국내생산, 100% 수작업', body: '제품 원자재의 100%가 국내에서 생산되며, 모든 작업이 수작업으로 이루어진 Handmade 제품입니다.' }
+      ],
+      specs: [
+        { k: '사용목적', v: '추간판 탈출증, 퇴행성 협착증 등의 치료에 도움을 주는 공기 주입을 통하여 척주를 견인하는 등에 사용하는 수동식 장치' },
+        { k: '제품 구성', v: '벨트, 벨크로 패드, 핸드 펌프(MP)' },
+        { k: '정격 사용 압력', v: '12psi ± 2psi' },
+        { k: '에어펌프 최대 공급 압력', v: '26psi' },
+        { k: '세탁 방법', v: '미지근한 물에 중성세제를 활용하여 손세탁' },
+        { k: '품질보증 기간', v: '구매일로부터 6개월' }
+      ],
+      sizes: [
+        { size: 'S', dim: '730 x 115', h: '175', fit: '24 ~ 28' },
+        { size: 'M', dim: '825 x 125', h: '190', fit: '28 ~ 34' },
+        { size: 'L', dim: '935 x 135', h: '205', fit: '34 ~ 40' },
+        { size: 'XL', dim: '1,050 x 135', h: '205', fit: '40 ~ 46' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
