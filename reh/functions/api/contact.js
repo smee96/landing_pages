@@ -46,13 +46,17 @@ export async function onRequestPost({ request, env }) {
   const hospital = String(body.hospital ?? '').trim();
   const manager = String(body.manager ?? '').trim();
   const phone = String(body.phone ?? '').trim();
+  const region = String(body.region ?? '').trim();
   const interests = Array.isArray(body.interests) ? body.interests.filter((i) => INTERESTS.includes(i)) : [];
+  const message = String(body.message ?? '').trim();
   const consent = body.consent === true;
 
   if (!hospital || hospital.length > 60) return bad(400, '병원명을 확인해 주세요.');
   if (manager.length > 40) return bad(400, '담당자명을 확인해 주세요.');
   const phoneDigits = phone.replace(/\D/g, '');
   if (phoneDigits.length < 10 || !/^[0-9-]{10,13}$/.test(phone)) return bad(400, '연락처를 확인해 주세요.');
+  if (region.length > 100) return bad(400, '지역을 확인해 주세요.');
+  if (message.length > 2000) return bad(400, '문의 내용은 최대 2000자입니다.');
   if (!consent) return bad(400, '개인정보 수집 및 이용에 동의해 주세요.');
 
   if (!env.BREVO_API_KEY || !env.CONTACT_TO_EMAIL || !env.CONTACT_FROM_EMAIL) {
@@ -64,7 +68,9 @@ export async function onRequestPost({ request, env }) {
     ['병원명', hospital],
     ['담당자명', manager || '(없음)'],
     ['연락처', phone],
+    ['지역', region || '(없음)'],
     ['관심 항목', interests.length ? interests.join(', ') : '(선택 없음)'],
+    ['문의 내용', message || '(없음)'],
     ['개인정보 동의', '동의함'],
     ['접수 시각', `${receivedAt} (KST)`],
   ];
