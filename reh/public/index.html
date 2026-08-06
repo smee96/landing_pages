@@ -547,6 +547,21 @@ h2{font-family:'Noto Serif KR',serif;font-weight:400;font-size:clamp(26px,3.2vw,
 </footer>
 
 <script>
+// 진입 시 항상 상단부터 (과거 CTA 클릭으로 URL에 붙은 해시 제거)
+if (location.hash) {
+  history.replaceState(null, '', location.pathname);
+  window.scrollTo(0, 0);
+}
+// 앵커 링크: URL 해시를 남기지 않고 스크롤만
+document.addEventListener('click', function(e){
+  var a = e.target.closest('a[href^="#"]');
+  if (!a) return;
+  var el = document.querySelector(a.getAttribute('href'));
+  if (!el) return;
+  e.preventDefault();
+  el.scrollIntoView({behavior:'smooth'});
+});
+
 // 모바일 드로어
 var drawer = document.getElementById('drawer');
 document.getElementById('menu-btn').addEventListener('click', function(){
