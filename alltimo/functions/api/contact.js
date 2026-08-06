@@ -50,8 +50,9 @@ export async function onRequestPost({ request, env }) {
   const consent = body.consent === true;
 
   if (!name || name.length > 40) return bad(400, '이름을 확인해 주세요.');
-  if (!/^[0-9-]{9,13}$/.test(phone)) return bad(400, '연락처를 확인해 주세요.');
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254) return bad(400, '이메일을 확인해 주세요.');
+  if (!phone && !email) return bad(400, '연락처와 이메일 중 하나는 입력해 주세요.');
+  if (phone && !/^0\d{1,2}-?\d{3,4}-?\d{4}$/.test(phone)) return bad(400, '연락처를 확인해 주세요.');
+  if (email && (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) || email.length > 254)) return bad(400, '이메일을 확인해 주세요.');
   if (!company || company.length > 100) return bad(400, '병원/샵 이름을 확인해 주세요.');
   if (!region || region.length > 100) return bad(400, '지역을 확인해 주세요.');
   if (message.length > 2000) return bad(400, '문의 내용은 최대 2000자입니다.');
@@ -64,8 +65,8 @@ export async function onRequestPost({ request, env }) {
   const receivedAt = new Date().toLocaleString('ko-KR', { timeZone: 'Asia/Seoul' });
   const rows = [
     ['이름', name],
-    ['연락처', phone],
-    ['이메일', email],
+    ['연락처', phone || '(없음)'],
+    ['이메일', email || '(없음)'],
     ['병원 / 샵 이름', company],
     ['지역', region],
     ['문의 내용', message || '(없음)'],
@@ -91,7 +92,7 @@ export async function onRequestPost({ request, env }) {
     body: JSON.stringify({
       from: env.CONTACT_FROM_EMAIL,
       to: env.CONTACT_TO_EMAIL,
-      reply_to: email,
+      ...(email ? { reply_to: email } : {}),
       subject: `[올티모 도입문의] ${company} / ${name}`,
       html,
     }),

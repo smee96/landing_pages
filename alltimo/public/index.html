@@ -196,6 +196,19 @@ h1 .accent{color:var(--accent-light)}
 .form-success p{font-size:15px;color:var(--muted);line-height:1.7}
 .hp-field{position:absolute;left:-9999px;opacity:0;height:0;overflow:hidden}
 
+/* Scroll to top */
+.to-top{
+  position:fixed;right:22px;bottom:22px;z-index:90;
+  width:50px;height:50px;border-radius:50%;
+  background:var(--surface);border:1px solid rgba(216,172,130,.45);
+  font-size:20px;line-height:1;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 6px 20px rgba(0,0,0,.45);
+  opacity:0;visibility:hidden;transform:translateY(8px);
+  transition:opacity .2s ease,transform .2s ease,visibility .2s;
+}
+.to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+.to-top:hover{border-color:var(--accent-light)}
+
 /* Footer */
 .footer{
   padding:34px 56px;font-size:13px;line-height:1.9;
@@ -359,14 +372,14 @@ h1 .accent{color:var(--accent-light)}
           <div class="err">이름을 입력해 주세요. (1~40자)</div>
         </div>
         <div class="field">
-          <label for="f-phone">연락처</label>
-          <input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="010-0000-0000" required>
-          <div class="err">연락처를 확인해 주세요. (숫자/하이픈, 9~13자)</div>
+          <label for="f-phone">연락처 <span style="opacity:.55">(이메일과 둘 중 하나 필수)</span></label>
+          <input id="f-phone" name="phone" type="tel" autocomplete="tel" inputmode="numeric" placeholder="010-0000-0000">
+          <div class="err" id="err-phone">연락처를 확인해 주세요.</div>
         </div>
         <div class="field">
-          <label for="f-email">이메일</label>
-          <input id="f-email" name="email" type="email" autocomplete="email" required>
-          <div class="err">이메일 형식을 확인해 주세요.</div>
+          <label for="f-email">이메일 <span style="opacity:.55">(연락처와 둘 중 하나 필수)</span></label>
+          <input id="f-email" name="email" type="email" autocomplete="email" placeholder="example@email.com">
+          <div class="err" id="err-email">이메일 형식을 확인해 주세요.</div>
         </div>
         <div class="field">
           <label for="f-company">병원 / 샵 이름</label>
@@ -401,6 +414,8 @@ h1 .accent{color:var(--accent-light)}
   </div>
 </section>
 
+<button class="to-top" id="to-top" aria-label="맨 위로" title="맨 위로">⬆️</button>
+
 <footer class="footer">
   Locations. 서울특별시 구로구 디지털로 243 1312호<br>
   Biz License 739-88-01385<br>
@@ -416,9 +431,43 @@ document.querySelectorAll('[data-scroll-contact]').forEach(function(btn){
   });
 });
 
+// 맨 위로 버튼
+var toTop = document.getElementById('to-top');
+window.addEventListener('scroll', function(){
+  toTop.classList.toggle('show', window.scrollY > 400);
+}, {passive:true});
+toTop.addEventListener('click', function(){
+  window.scrollTo({top:0, behavior:'smooth'});
+});
+
 var form = document.getElementById('contact-form');
 var msgEl = document.getElementById('form-msg');
 var submitBtn = document.getElementById('submit-btn');
+
+// 연락처: 숫자만 입력받아 하이픈 자동 삽입, 빈 칸 포커스 시 010 자동 입력
+var phoneInput = form.phone;
+phoneInput.addEventListener('focus', function(){
+  if (!this.value) this.value = '010-';
+});
+phoneInput.addEventListener('blur', function(){
+  if (this.value === '010-' || this.value === '010') this.value = '';
+});
+phoneInput.addEventListener('input', function(){
+  var d = this.value.replace(/\D/g, '').slice(0, 11);
+  var out = d;
+  if (d.length > 7) out = d.slice(0,3) + '-' + d.slice(3,7) + '-' + d.slice(7);
+  else if (d.length > 3) out = d.slice(0,3) + '-' + d.slice(3);
+  this.value = out;
+});
+
+var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+var PHONE_RE = /^0\d{1,2}-?\d{3,4}-?\d{4}$/;
+
+// 이메일: 입력 중 실시간 형식 체크
+form.email.addEventListener('blur', function(){
+  var v = this.value.trim();
+  setInvalid(this, v !== '' && !EMAIL_RE.test(v));
+});
 
 function setInvalid(input, invalid){
   var field = input.closest('.field');
@@ -431,13 +480,19 @@ function validate(){
   var nameOk = name.length >= 1 && name.length <= 40;
   setInvalid(form.name, !nameOk); ok = ok && nameOk;
 
+  // 연락처·이메일: 형식은 각자 체크하되, 둘 중 하나는 반드시 입력
   var phone = form.phone.value.trim();
-  var phoneOk = /^[0-9-]{9,13}$/.test(phone);
-  setInvalid(form.phone, !phoneOk); ok = ok && phoneOk;
-
   var email = form.email.value.trim();
-  var emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  setInvalid(form.email, !emailOk); ok = ok && emailOk;
+  var phoneOk = phone === '' || PHONE_RE.test(phone);
+  var emailOk = email === '' || EMAIL_RE.test(email);
+  var hasOne = phone !== '' || email !== '';
+  document.getElementById('err-phone').textContent = !hasOne
+    ? '연락처와 이메일 중 하나는 입력해 주세요.' : '연락처를 확인해 주세요.';
+  document.getElementById('err-email').textContent = !hasOne
+    ? '연락처와 이메일 중 하나는 입력해 주세요.' : '이메일 형식을 확인해 주세요.';
+  setInvalid(form.phone, !phoneOk || !hasOne);
+  setInvalid(form.email, !emailOk || !hasOne);
+  ok = ok && phoneOk && emailOk && hasOne;
 
   var companyOk = form.company.value.trim().length > 0;
   setInvalid(form.company, !companyOk); ok = ok && companyOk;
