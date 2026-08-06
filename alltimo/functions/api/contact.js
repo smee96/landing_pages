@@ -1,5 +1,5 @@
-// POST /api/contact — 문의 폼 접수 → Resend로 담당자 메일 발송
-// 필요 환경변수(Cloudflare Pages 프로젝트 설정): RESEND_API_KEY, CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL
+// POST /api/contact — 문의 폼 접수 → Brevo로 담당자 메일 발송
+// 필요 환경변수(Cloudflare Pages 프로젝트 설정): BREVO_API_KEY, CONTACT_TO_EMAIL, CONTACT_FROM_EMAIL
 
 const RATE_LIMIT = { windowMs: 60_000, max: 3 };
 const hits = new Map(); // isolate 단위 best-effort rate limit
@@ -58,7 +58,7 @@ export async function onRequestPost({ request, env }) {
   if (message.length > 2000) return bad(400, '문의 내용은 최대 2000자입니다.');
   if (!consent) return bad(400, '개인정보 수집 및 이용에 동의해 주세요.');
 
-  if (!env.RESEND_API_KEY || !env.CONTACT_TO_EMAIL || !env.CONTACT_FROM_EMAIL) {
+  if (!env.BREVO_API_KEY || !env.CONTACT_TO_EMAIL || !env.CONTACT_FROM_EMAIL) {
     return bad(500, '메일 전송 설정이 아직 완료되지 않았습니다. 잠시 후 다시 시도해 주세요.');
   }
 
@@ -83,23 +83,23 @@ export async function onRequestPost({ request, env }) {
         </tr>`).join('')}
     </table>`;
 
-  const res = await fetch('https://api.resend.com/emails', {
+  const res = await fetch('https://api.brevo.com/v3/smtp/email', {
     method: 'POST',
     headers: {
-      Authorization: `Bearer ${env.RESEND_API_KEY}`,
+      'api-key': env.BREVO_API_KEY,
       'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-      from: env.CONTACT_FROM_EMAIL,
-      to: env.CONTACT_TO_EMAIL,
-      ...(email ? { reply_to: email } : {}),
+      sender: { name: '올티모 랜딩페이지', email: env.CONTACT_FROM_EMAIL },
+      to: [{ email: env.CONTACT_TO_EMAIL }],
+      ...(email ? { replyTo: { email } } : {}),
       subject: `[올티모 도입문의] ${company} / ${name}`,
-      html,
+      htmlContent: html,
     }),
   });
 
   if (!res.ok) {
-    console.error('Resend error', res.status, await res.text());
+    console.error('Brevo error', res.status, await res.text());
     return bad(502, '메일 전송에 실패했습니다. 잠시 후 다시 시도해 주세요.');
   }
 
