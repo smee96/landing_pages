@@ -30,10 +30,10 @@ npx wrangler pages deploy public --project-name hellomedia-landing
 
 시크릿은 배포 시점 스냅샷이다 — 값을 바꾸면 재배포해야 반영된다.
 
-## 미완 항목
+## 참고
 
-- 소개서 PDF: "매체 소개서 다운로드" 버튼 2곳은 파일이 없어 주석 처리됨.
-  PDF를 받으면 `public/uploads/hellomedia.pdf`로 넣고 index.html의 주석 두 곳을 해제.
+- 소개서 PDF: `public/uploads/hellomedia.pdf` (2026-08-12 반영, "헬로미디어 매체 소개서_영상프로모션2")
+- 컬러: 2026-08-12 코랄(#ee6a5b)/네이비(#2a3252) 리스킨 시안("헬로미디어2") 반영.
 - 단가 표시: 시안의 `showPricing` 기본값(true)대로 **단가 노출 상태**
   (풀 2,000만원 · 하프 1,000만원 · CPV 6원, 할증/할인표 포함).
 - AI 샘플 영상: 시안에 있던 R2 공개 URL을 그대로 사용 중 — 디스코박스 측 버킷이므로

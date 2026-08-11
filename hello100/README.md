@@ -29,10 +29,9 @@ npx wrangler pages deploy public --project-name hello100-landing
 
 시크릿은 배포 시점 스냅샷이다 — 값을 바꾸면 재배포해야 반영된다.
 
-## 미완 항목
+## 참고
 
-- 소개서 PDF: 디자인의 "소개서 다운로드" 버튼 2곳은 파일이 없어 주석 처리됨.
-  PDF를 받으면 `public/uploads/hello100.pdf`로 넣고 index.html의 주석 두 곳을 해제.
+- 소개서 PDF: `public/uploads/hello100.pdf` (2026-08-12 반영, "MOBIN Inc. — 헬로100 광고 상품 소개서_v2")
 - 단가 표시: 디자인의 `showPricing` 토글 기본값(false)대로 단가 비노출 상태.
   노출이 필요하면 원본 시안의 가격 블록을 참고해 카드에 추가.
 
