@@ -2,3 +2,4 @@
 node_modules/
 .*key*.txt
 *.key
+.DS_Store
